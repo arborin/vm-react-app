@@ -21,10 +21,11 @@
 const Car = (props) => {
     // console.log(111);
     return (
-    <div>
+    <div style={{ border: "1px solid #ccc", padding: '10px', margin: '20px'}}>
         <h2>Car Name: {props.name}</h2>
         <p key={1}>Year: <strong>{props.year}</strong></p>
-        <button onClick={props.onChangeTitle}>Click</button>
+        <input type='text' onChange={props.onChangeName} value={props.name}/>
+        {/* <button onClick={props.onChangeTitle}>Click</button> */}
     </div>)
 }
 

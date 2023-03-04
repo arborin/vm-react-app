@@ -58,6 +58,21 @@ class App extends Component {
         showCars: !this.state.showCars
       });
   }
+  
+  
+  onChangeName = (name, index) => {
+    console.log(name, ' ', index);
+    
+    const car = this.state.cars[index];
+    car.name = name;
+    
+    const cars = [...this.state.cars];
+    cars[index] = car;
+    this.setState({
+      cars: cars
+    });
+    
+  }
    
   render() {
     
@@ -68,11 +83,11 @@ class App extends Component {
     let cars = null;
     
     if(this.state.showCars){
-      cars = this.state.cars.map((car)=>{
+      cars = this.state.cars.map((car, index)=>{
                 return (
-                        <Car key={car.name} name={car.name} 
+                        <Car key={index} name={car.name} 
                         year={car.year} 
-                        onChangeTitle={this.changeTitle.bind(this, car.name)}/>
+                        onChangeName={(event) => this.onChangeName(event.target.value, index)}/>
                 )
               });
     }else{
