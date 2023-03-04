@@ -73,6 +73,16 @@ class App extends Component {
     });
     
   }
+  
+  onDeleteItem = (index) => {
+    const cars = this.state.cars.concat();
+    
+    cars.splice(index, 1);
+    
+    this.setState({
+      cars
+    })
+  }
    
   render() {
     
@@ -87,6 +97,7 @@ class App extends Component {
                 return (
                         <Car key={index} name={car.name} 
                         year={car.year} 
+                        onDeleteItem={this.onDeleteItem.bind(this, index)}
                         onChangeName={(event) => this.onChangeName(event.target.value, index)}/>
                 )
               });
@@ -111,7 +122,13 @@ class App extends Component {
         {/* <Car name={'audi'} year={'2017'} onChangeTitle={this.changeTitle.bind(this, cars[0]['name'])}/> */}
         {/* <Car name={'ford'} year={'2020'}><p>Color</p></Car> */}
         
-        {cars}  
+        <div style={{
+          width: "400px",
+          margin: 'auto',
+          paddingTop: '20px'
+        }}>
+          {cars}  
+        </div>
         
         <p style={{'color': 'red', 'fontSize': '28px'}}>Nika Kobaidze</p>
       </div>

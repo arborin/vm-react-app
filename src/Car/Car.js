@@ -17,16 +17,35 @@
 
 // export default car;
 
+import './Car.css';
+
 
 const Car = (props) => {
-    // console.log(111);
+    
+    const inputClasses = ['input',];
+    
+    if(props.name !== ''){
+        inputClasses.push('green')
+    }else{
+        inputClasses.push('red');
+    }
+        
+    console.log(props.name.length)
+    if(props.name.length > 4){
+        inputClasses.push('bold');
+    }
+    
     return (
-    <div style={{ border: "1px solid #ccc", padding: '10px', margin: '20px'}}>
-        <h2>Car Name: {props.name}</h2>
-        <p key={1}>Year: <strong>{props.year}</strong></p>
-        <input type='text' onChange={props.onChangeName} value={props.name}/>
-        {/* <button onClick={props.onChangeTitle}>Click</button> */}
-    </div>)
+        <div className="Car">       
+            <h2>Car Name: {props.name}</h2>
+            <p key={1}>Year: <strong>{props.year}</strong></p>
+            <input type='text' 
+                    className={inputClasses.join(' ')}
+                    onChange={props.onChangeName} 
+                    value={props.name}/>
+            <button onClick={props.onDeleteItem}>Delete</button>
+        </div>
+        )
 }
 
 export default Car;
