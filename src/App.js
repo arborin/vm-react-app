@@ -111,7 +111,7 @@ class App extends Component {
       
         
         <h1 style={title}>{this.state.pageTitle}</h1>
-        
+        <h1>{this.props.title}</h1>
         <input type='text' onChange={this.handleInput}/>
         
         <button onClick={this.changeTitle.bind(this,'Changed!')}>change title</button>

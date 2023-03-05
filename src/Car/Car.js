@@ -30,13 +30,18 @@ const Car = (props) => {
         inputClasses.push('red');
     }
         
-    console.log(props.name.length)
     if(props.name.length > 4){
         inputClasses.push('bold');
     }
     
+    const style = {
+        border: '1px solid #ccc',
+        boxShadow: '0 4px 5px 0 rgba(0, 0, 0, 0.14)'
+    }
+    
+    
     return (
-        <div className="Car">       
+        <div className="Car" style={style}>       
             <h2>Car Name: {props.name}</h2>
             <p key={1}>Year: <strong>{props.year}</strong></p>
             <input type='text' 
