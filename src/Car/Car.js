@@ -23,6 +23,11 @@ import './Car.css';
 
 class Car extends Component {
 
+    componentDidMount() {
+        if (this.props.index === 1) {
+            this.inputRef.focus();
+        }
+    }
 
     render() {
         const inputClasses = ['input',];
@@ -48,6 +53,7 @@ class Car extends Component {
                 <h2>Car Name: {this.props.name}</h2>
                 <p key={1}>Year: <strong>{this.props.year}</strong></p>
                 <input type='text'
+                    ref={(inputRef) => this.inputRef = inputRef}
                     className={inputClasses.join(' ')}
                     onChange={this.props.onChangeName}
                     value={this.props.name} />

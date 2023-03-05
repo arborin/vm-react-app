@@ -27,6 +27,9 @@ import Counter from './Counter/Counter';
 import React, { Component } from 'react'
 import Car from './Car/Car'
 
+
+export const ClickedContext = React.createContext(false);
+
 class App extends Component {
 
   constructor(props) {
@@ -41,7 +44,8 @@ class App extends Component {
         { name: 'BMW', year: 2021 },
       ],
       pageTitle: 'React Components',
-      showCars: true
+      showCars: true,
+      clicked: false
     }
   }
 
@@ -127,6 +131,7 @@ class App extends Component {
           <ErrorBoundary key={index}>
             <Car name={car.name}
               year={car.year}
+              index={index}
               onDeleteItem={this.onDeleteItem.bind(this, index)}
               onChangeName={(event) => this.onChangeName(event.target.value, index)} />
           </ErrorBoundary>
@@ -140,9 +145,9 @@ class App extends Component {
     return (
       <div className='App'>
 
-        <div>
+        <ClickedContext.Provider value={this.state.clicked}>
           <Counter />
-        </div>
+        </ClickedContext.Provider>
 
         <h1 style={title}>{this.state.pageTitle}</h1>
         <h1>{this.props.title}</h1>
@@ -153,6 +158,7 @@ class App extends Component {
           <button onClick={this.toggleCars}>Toggle Cars</button>
         </div>
 
+        <button onClick={() => { this.setState({ clicked: true }) }}>CLiCK TRUE</button>
         {/* <Car name={'audi'} year={'2017'} onChangeTitle={this.changeTitle.bind(this, cars[0]['name'])}/> */}
         {/* <Car name={'ford'} year={'2020'}><p>Color</p></Car> */}
 
@@ -165,7 +171,7 @@ class App extends Component {
         </div>
 
         <p style={{ 'color': 'red', 'fontSize': '28px' }}>Nika Kobaidze</p>
-      </div>
+      </div >
     )
   }
 }
