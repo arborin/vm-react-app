@@ -44,6 +44,22 @@ class App extends Component {
                 }
   }
   
+  
+  // components live cicle only from Component class
+  
+  // first step (not use)
+  componentWillUnmount(){
+    console.log('1. this.componentWillUnmount');
+  }
+  
+  // third step render
+  componentDidMount(){
+    console.log('2. Did mount (render)');
+  }
+  
+  // third step 
+  // render()
+  
  
   
   changeTitle = (newTitle) => {
@@ -93,7 +109,7 @@ class App extends Component {
   }
    
   render() {
-    
+    console.log("3. RENDER");
     const title = {'fontSize': '40px', 'color': 'blue' };
     
     // const cars = this.state.cars;
