@@ -28,15 +28,23 @@ import Car from './Car/Car'
 
 class App extends Component {
   
-  state = {
-    cars: [
-      {name: 'audi', year: 1990},
-      {name: 'ford', year: 2000},
-      {name: 'BMW', year: 2021},
-    ],
-    pageTitle: 'React Components',
-    showCars: true
+  constructor(props){
+    super(props);
+    console.log('Constrictor run!');
+    console.log(props);
+    
+    this.state = {
+                  cars: [
+                    {name: 'audi', year: 1990},
+                    {name: 'ford', year: 2000},
+                    {name: 'BMW', year: 2021},
+                  ],
+                  pageTitle: 'React Components',
+                  showCars: true
+                }
   }
+  
+ 
   
   changeTitle = (newTitle) => {
     // let oldTitle = this.state.pageTitle;
