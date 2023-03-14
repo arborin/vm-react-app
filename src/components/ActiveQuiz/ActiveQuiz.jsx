@@ -1,19 +1,23 @@
 import React from 'react'
+import AnswersList from './activeList.jsx/AnswersList'
 
 export default function ActiveQuiz(props) {
+  
+  console.log(props)
+  
+  
   return (
     <div>
         
         <p>
-            <span><strong>2. </strong> HOW ARE U?</span>
+            <span><strong>2. </strong>{props.question}</span>
         </p>
         <p>4 from 5</p>
-        <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-        </ul>
+        
+        <AnswersList
+          answers={props.answers}
+          onAnswerClick={props.onAnswerClick}
+        />
     </div>
   )
 }
