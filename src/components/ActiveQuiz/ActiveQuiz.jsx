@@ -10,13 +10,14 @@ export default function ActiveQuiz(props) {
     <div>
         
         <p>
-            <span><strong>2. </strong>{props.question}</span>
+            <span><strong>{props.answerNumber}. </strong>{props.question}</span>
         </p>
-        <p>4 from 5</p>
+        <p>{props.answerNumber} from {props.quizLength}</p>
         
         <AnswersList
           answers={props.answers}
-          onAnswerClick={props.onAnswerClick}
+          onAnswerClick={props.onAnswerClick} 
+          answerState={props.answerState}
         />
     </div>
   )
